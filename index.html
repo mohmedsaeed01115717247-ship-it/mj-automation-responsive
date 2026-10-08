@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي</title>
+
+    <!-- ضع كود الـ CSS هنا داخل وسم style -->
+    <style>:root {
+  --bg: #07111d;
+  --bg-soft: #0b1727;
+  --panel: rgba(16, 34, 51, 0.88);
+  --panel-strong: #0d1f30;
+  --card: #10253d;
+  --card-alt: #112a44;
+  --line: rgba(160, 196, 255, 0.18);
+  --text: #eaf3ff;
+  --muted: #a4bbd6;
+  --muted-strong: #d7e7ff;
+  --primary: #47d5ff;
+  --primary-deep: #1fa9ff;
+  --accent: #7ef0d1;
+  --shadow: 0 18px 48px rgba(5, 13, 23, 0.45);
+  --radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(71, 213, 255, 0.16), transparent 26%),
+    radial-gradient(circle at top right, rgba(126, 240, 209, 0.12), transparent 22%),
+    var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section-space {
+  padding: clamp(60px, 8vw, 120px) 0;
+}
+
+.alt-bg {
+  background: rgba(11, 23, 39, 0.7);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2.7rem, 5vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  max-width: 620px;
+  margin-bottom: 1.3rem;
+}
+
+h2 {
+  font-size: clamp(2.1rem, 3vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.8;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.45rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+  color: #031821;
+  box-shadow: 0 12px 30px rgba(71, 213, 255, 0.22);
+}
+
+.btn-secondary {
+  border-color: rgba(127, 163, 224, 0.38);
+  background: rgba(12, 24, 38, 0.45);
+  color: var(--text);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  background: rgba(7, 17, 29, 0.75);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(160, 196, 255, 0.09);
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: #031821;
+  font-size: 0.9rem;
+  box-shadow: 0 12px 30px rgba(71, 213, 255, 0.22);
+}
+
+.brand-name {
+  font-size: 1.05rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--muted-strong);
+}
+
+.main-nav a {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.nav-btn {
+  margin-left: 0.5rem;
+}
+
+.menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(15, 26, 39, 0.9);
+  border: 1px solid var(--line);
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  margin: 5px 0;
+  border-radius: 10px;
+}
+
+.hero {
+  padding-top: clamp(40px, 7vw, 80px);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.06fr 0.94fr;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 5rem);
+}
+
+.hero-copy p {
+  max-width: 620px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.hero-trust {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  color: var(--muted-strong);
+  font-size: 0.95rem;
+}
+
+.hero-trust li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.hero-trust li::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+}
+
+.dashboard-card {
+  position: relative;
+  width: min(100%, 520px);
+  padding: 1.4rem;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(16, 37, 61, 0.96), rgba(8, 19, 32, 0.95));
+  border: 1px solid rgba(151, 196, 252, 0.17);
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--muted-strong);
+  font-size: 0.85rem;
+  margin-bottom: 1.6rem;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 8px rgba(71, 213, 255, 0.12);
+}
+
+.chart-box {
+  height: 220px;
+  border-radius: 20px;
+  padding: 1.2rem 1rem 0.5rem;
+  background: linear-gradient(180deg, rgba(13, 31, 48, 0.8), rgba(8, 19, 32, 0.9));
+  border: 1px solid rgba(127, 161, 211, 0.14);
+}
+
+.bar-group {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.8rem;
+}
+
+.bar-group span {
+  display: block;
+  height: var(--h);
+  min-height: 30%;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(180deg, var(--primary) 0%, rgba(71, 213, 255, 0.25) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.bar-group span:nth-child(2n) {
+  background: linear-gradient(180deg, #7ef0d1 0%, rgba(126, 240, 209, 0.2) 100%);
+}
+
+.stat-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.mini-stat {
+  flex: 1;
+  background: rgba(13, 31, 48, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0.8rem 1rem;
+}
+
+.mini-stat strong {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.mini-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.mini-stat.accent strong {
+  color: var(--accent);
+}
+
+.floating-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 18px;
+  background: rgba(10, 23, 34, 0.92);
+  border: 1px solid rgba(161, 196, 255, 0.18);
+  box-shadow: var(--shadow);
+}
+
+.badge-one {
+  bottom: 26px;
+  left: 0;
+}
+
+.badge-two {
+  top: 50px;
+  right: 4px;
+}
+
+.badge-label {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.floating-badge strong {
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.stats-bar {
+  border-top: 1px solid rgba(160,196,255,0.08);
+  border-bottom: 1px solid rgba(160,196,255,0.08);
+  background: rgba(10, 20, 34, 0.3);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stats-grid div {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid rgba(160,196,255,0.08);
+}
+
+.stats-grid div:last-child {
+  border-right: 0;
+}
+
+.stats-grid strong {
+  font-size: clamp(1.6rem, 2vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.stats-grid span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.section-heading {
+  margin-bottom: 2.4rem;
+}
+
+.section-heading h2 {
+  max-width: 760px;
+}
+
+.narrow-heading {
+  text-align: center;
+}
+
+.narrow-heading h2 {
+  margin-inline: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: linear-gradient(180deg, rgba(18, 35, 55, 0.9), rgba(10, 21, 35, 0.72));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.7rem 1.4rem 1.5rem;
+  box-shadow: 0 12px 28px rgba(4, 10, 18, 0.18);
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(71,213,255,0.18), rgba(126,240,209,0.12));
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  margin-bottom: 0.8rem;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.process-step {
+  position: relative;
+  background: rgba(17, 35, 54, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.5rem 1.2rem;
+}
+
+.step-number {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(71,213,255,0.18), rgba(126,240,209,0.12));
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.features-layout {
+  display: grid;
+  grid-template-columns: 1.03fr 0.97fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.feature-copy p {
+  max-width: 620px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 1rem;
+  color: var(--muted-strong);
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.feature-panel {
+  background: linear-gradient(180deg, rgba(18, 35, 55, 0.96), rgba(10, 22, 36, 0.9));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+
+.panel-label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.panel-top strong {
+  font-size: 1.4rem;
+}
+
+.trend-up {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.panel-chart {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.7rem;
+  height: 220px;
+  margin: 1.5rem 0;
+  padding: 1rem 0.8rem 0.5rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(13, 31, 48, 0.8), rgba(8, 19, 32, 0.9));
+  border: 1px solid rgba(127, 161, 211, 0.13);
+}
+
+.panel-chart span {
+  display: block;
+  height: var(--p);
+  min-height: 20%;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(180deg, var(--primary) 0%, rgba(71, 213, 255, 0.25) 100%);
+}
+
+.panel-chart span:nth-child(2n) {
+  background: linear-gradient(180deg, #7ef0d1 0%, rgba(126, 240, 209, 0.2) 100%);
+}
+
+.panel-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.panel-metrics div {
+  background: rgba(13, 31, 48, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+}
+
+.panel-metrics small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.testimonial-card {
+  margin: 0;
+  background: linear-gradient(180deg, rgba(18, 35, 55, 0.85), rgba(10, 22, 36, 0.7));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.7rem 1.5rem;
+  color: var(--muted-strong);
+  line-height: 1.8;
+}
+
+.testimonial-card footer {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.testimonial-card strong {
+  color: var(--text);
+}
+
+.testimonial-card span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  padding-top: 1rem;
+}
+
+.footer-wrap {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3.4rem 0 2.4rem;
+}
+
+.footer-copy h2 {
+  max-width: 620px;
+}
+
+.cta-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bottom-bar {
+  border-top: 1px solid rgba(160,196,255,0.08);
+  background: rgba(8, 17, 28, 0.8);
+}
+
+.bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 74px;
+}
+
+.bottom-inner p,
+.footer-links a {
+  color: var(--muted);
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.1rem;
+}
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .features-layout,
+  .footer-wrap {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-wrap {
+    align-items: start;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 16px;
+    right: 16px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: rgba(9, 19, 31, 0.98);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .nav-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .process-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 420px;
+  }
+
+  .floating-badge {
+    transform: scale(0.9);
+  }
+
+  .badge-one {
+    left: 6px;
+  }
+
+  .badge-two {
+    right: 10px;
+  }
+
+  .bottom-inner {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-actions,
+  .cta-box {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .brand-name {
+    display: none;
+  }
+
+  .hero-copy p,
+  .feature-copy p,
+  .service-card p,
+  .process-step p,
+  .testimonial-card {
+    font-size: 0.98rem;
+  }
+
+  .dashboard-card {
+    padding: 1rem;
+  }
+
+  .chart-box {
+    height: 170px;
+  }
+}
+
+        /* ضع كود الـ CSS بالكامل هنا */
+    </style>
+</head>
+<body> <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MJ Automation helps businesses automate workflows, improve operations, and scale with smart digital systems."
+    />
+    <title>MJ Automation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="container nav-wrap">
+          <a href="#home" class="brand" aria-label="MJ Automation home">
+            <span class="brand-mark">MJ</span>
+            <span class="brand-name">MJ Automation</span>
+          </a>
+
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="btn btn-primary nav-btn">Book a Call</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="home">
+        <section class="hero section-space">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Smart Automation for Modern Business</span>
+              <h1>We build systems that save time, reduce cost, and grow your business.</h1>
+              <p>
+                MJ Automation helps brands streamline operations through custom automations,
+                integrations, AI workflows, and data-driven digital systems that increase speed
+                and accuracy.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+              </div>
+
+              <ul class="hero-trust" aria-label="Trust list">
+                <li>Trusted by startups and growing teams</li>
+                <li>Built for speed, clarity, and scale</li>
+              </ul>
+            </div>
+
+            <div class="hero-visual" aria-label="Automation dashboard preview">
+              <div class="dashboard-card card-main">
+                <div class="card-header">
+                  <div class="pulse-dot"></div>
+                  <span>Operations Dashboard</span>
+                </div>
+
+                <div class="chart-box">
+                  <div class="bar-group">
+                    <span style="--h: 48%"></span>
+                    <span style="--h: 68%"></span>
+                    <span style="--h: 74%"></span>
+                    <span style="--h: 88%"></span>
+                    <span style="--h: 92%"></span>
+                    <span style="--h: 100%"></span>
+                  </div>
+                </div>
+
+                <div class="stat-row">
+                  <div class="mini-stat">
+                    <strong>31%</strong>
+                    <span>Faster workflows</span>
+                  </div>
+                  <div class="mini-stat accent">
+                    <strong>24/7</strong>
+                    <span>Automation coverage</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="floating-badge badge-one">
+                <span class="badge-label">Workflow Health</span>
+                <strong>98.4%</strong>
+              </div>
+
+              <div class="floating-badge badge-two">
+                <span class="badge-label">Tasks Automated</span>
+                <strong>12,400+</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-bar">
+          <div class="container stats-grid">
+            <div>
+              <strong>120+</strong>
+              <span>Projects delivered</span>
+            </div>
+            <div>
+              <strong>8 yrs</strong>
+              <span>Automation experience</span>
+            </div>
+            <div>
+              <strong>14k+</strong>
+              <span>Tasks automated monthly</span>
+            </div>
+            <div>
+              <strong>93%</strong>
+              <span>Client retention</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="section-space">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Our Services</span>
+              <h2>Automation solutions built around your business operations.</h2>
+            </div>
+
+            <div class="services-grid">
+              <article class="service-card">
+                <div class="icon">01</div>
+                <h3>Workflow Automation</h3>
+                <p>
+                  Eliminate repetitive tasks with intelligent, custom-built workflows across your
+                  teams and tools.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="icon">02</div>
+                <h3>CRM & Sales Integration</h3>
+                <p>
+                  Connect your sales, support, and marketing platforms to keep data flowing in
+                  real time.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="icon">03</div>
+                <h3>AI & Chatbot Systems</h3>
+                <p>
+                  Use AI assistants and smart automations to improve customer support, lead
+                  handling, and response speed.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="icon">04</div>
+                <h3>Reporting Dashboards</h3>
+                <p>
+                  Turn scattered data into proactive dashboards that help you make faster, better
+                  decisions.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="icon">05</div>
+                <h3>E-commerce Automation</h3>
+                <p>
+                  Automate order processing, customer communication, and operational tasks to grow
+                  with less friction.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="icon">06</div>
+                <h3>Custom App Flows</h3>
+                <p>
+                  Build business-specific automations for approvals, follow-ups, data updates, and
+                  process orchestration.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="process" class="section-space alt-bg">
+          <div class="container">
+            <div class="section-heading narrow-heading">
+              <span class="eyebrow">How We Work</span>
+              <h2>Simple, structured, and built for measurable results.</h2>
+            </div>
+
+            <div class="process-grid">
+              <div class="process-step">
+                <span class="step-number">01</span>
+                <h3>Discover</h3>
+                <p>We map your current workflow, bottlenecks, and automation opportunities.</p>
+              </div>
+
+              <div class="process-step">
+                <span class="step-number">02</span>
+                <h3>Design</h3>
+                <p>We create a practical automation blueprint tailored to your business model.</p>
+              </div>
+
+              <div class="process-step">
+                <span class="step-number">03</span>
+                <h3>Build</h3>
+                <p>We implement the systems, data flows, and integrations with clear logic.</p>
+              </div>
+
+              <div class="process-step">
+                <span class="step-number">04</span>
+                <h3>Optimize</h3>
+                <p>We monitor, refine, and improve automation performance over time.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="solutions" class="section-space">
+          <div class="container features-layout">
+            <div class="feature-copy">
+              <span class="eyebrow">Why MJ Automation</span>
+              <h2>We combine technology, process thinking, and business understanding.</h2>
+              <p>
+                Our approach focuses on precision, clarity, and tangible business value. Every
+                automation is designed to reduce manual work, improve consistency, and give your
+                team more time to focus on growth.
+              </p>
+
+              <ul class="feature-list">
+                <li>Custom solutions for your exact workflow</li>
+                <li>Seamless integration with your current stack</li>
+                <li>Scalable systems built for long-term growth</li>
+                <li>Clear communication and measurable outcomes</li>
+              </ul>
+            </div>
+
+            <div class="feature-panel">
+              <div class="panel-top">
+                <div>
+                  <span class="panel-label">Performance</span>
+                  <strong>+46% productivity</strong>
+                </div>
+                <span class="trend-up">▲ 46%</span>
+              </div>
+
+              <div class="panel-chart">
+                <span style="--p: 30%"></span>
+                <span style="--p: 42%"></span>
+                <span style="--p: 54%"></span>
+                <span style="--p: 79%"></span>
+                <span style="--p: 90%"></span>
+                <span style="--p: 100%"></span>
+              </div>
+
+              <div class="panel-metrics">
+                <div>
+                  <small>Response time</small>
+                  <strong>2.3x faster</strong>
+                </div>
+                <div>
+                  <small>Manual tasks</small>
+                  <strong>-68%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="section-space alt-bg testimonial-section">
+          <div class="container">
+            <div class="section-heading narrow-heading">
+              <span class="eyebrow">Client Feedback</span>
+              <h2>Teams trust us to turn complexity into simpler systems.</h2>
+            </div>
+
+            <div class="testimonial-grid">
+              <blockquote class="testimonial-card">
+                “MJ Automation helped us simplify operations across departments and gave us a much
+                cleaner flow for customer communication and task handling.”
+                <footer>
+                  <strong>Operations Lead</strong>
+                  <span>Growth Company</span>
+                </footer>
+              </blockquote>
+
+              <blockquote class="testimonial-card">
+                “The automations were practical, fast to launch, and immediately saved our team a lot
+                of repetitive work.”
+                <footer>
+                  <strong>Founder</strong>
+                  <span>Service Business</span>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="contact" class="site-footer">
+        <div class="container footer-wrap">
+          <div class="footer-copy">
+            <span class="eyebrow">Let’s Build Better Systems</span>
+            <h2>Ready to automate the parts of your business that slow you down?</h2>
+          </div>
+
+          <div class="cta-box">
+            <a href="mailto:hello@mjautomation.com" class="btn btn-primary">hello@mjautomation.com</a>
+            <a href="tel:+0000000000" class="btn btn-secondary">+00 000 000 000</a>
+          </div>
+        </div>
+
+        <div class="bottom-bar">
+          <div class="container bottom-inner">
+            <p>© <span id="year"></span> MJ Automation. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="#services">Services</a>
+              <a href="#process">Process</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+   
+</body>
+</html>
